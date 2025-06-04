@@ -52,7 +52,7 @@ Each endpoint returns well-structured JSON with appropriate status codes (201, 2
 - **Expiration Logic on Read v/s Background Cleanup:** Expired short URLs are checked and rejected at the time of retrieval, but they are not actively removed from memory. This is efficient for now but could lead to memory bloat over time. In a production setting, a periodic cleanup task (e.g., using a scheduler) would be preferable.
  
 ### Assumptions
-- **Unique short code for each request:** I assumed that unless a custom short code is provided, each request — even for the same long URL — will result in a new short code. This matches how many URL shorteners behave and simplifies caching logic.
+- **Unique short code for each request:** I assumed that unless a custom short code is provided, each request even for the same long URL will result in a new short code. This matches how many URL shorteners behave and simplifies caching logic.
 
 - **Valid URLs are absolute and properly formatted:** I used basic Java validation to check if the submitted URL is well-formed. I'm assuming the URL is syntactically correct and that no authentication or deep validation is needed (e.g., checking if the URL is live or safe).
 
